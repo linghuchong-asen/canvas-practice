@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>矩形</title>
+  <style></style>
+</head>
+
+<body>
+
+  <script>
+    const canvas = document.createElement("canvas");
+    // 利用style设置画布边框
+    canvas.style.border = "solid 1px red"
+    canvas.style.backgroundColor = "skyblue"
+    document.body.append(canvas)
+    const ctx = canvas.getContext("2d")
+    // canvas默认的宽高是300 150
+    console.log(canvas.width,canvas.height);
+    // 设置canvas宽高  设置canvas宽高的操作要在绘制图元之前进行，不然就有可能看不到图元
+    canvas.width = 500;
+    canvas.height = 300
+    console.log(canvas.width,canvas.height);
+
+    /* 前两个参数是左上角坐标的X,Y值；后两个参数是宽和高 */
+    ctx.rect(20,20,100,50)
+    /* 绘制已经定义的路径，不调用这个函数看不出轮廓线 */
+    ctx.stroke()
+    
+    /* 填空矩形 */
+    ctx.fillStyle="#cf6cee"
+    ctx.fillRect(200,20,100,50)
+
+    /* 和rect的效果一样，但是不需要再单独调用stroke函数 */
+    ctx.strokeRect(350,20,100,50)
+  </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>canvas文字</title>
+  <style></style>
+</head>
+
+<body>
+
+  <script>
+    const canvas = document.createElement("canvas");
+    // 利用style设置画布边框
+    canvas.style.border = "solid 1px red"
+    canvas.style.backgroundColor = "skyblue"
+    document.body.append(canvas)
+    const ctx = canvas.getContext("2d")
+    // canvas默认的宽高是300 150
+    console.log(canvas.width,canvas.height);
+    // 设置canvas宽高  设置canvas宽高的操作要在绘制图元之前进行，不然就有可能看不到图元
+    canvas.width = 1000;
+    canvas.height = 300
+    console.log(canvas.width,canvas.height);
+
+    ctx.strokeStyle = "#ff6b81" // 线框文字的颜色
+    ctx.lineWidth = 5; // 文字线宽的宽度
+    ctx.fillStyle = "#16a085" // 实心文字的颜色
+    /* font与css中的font用法一样，指定文字的样式 */
+    ctx.font = "bold 100px arial"
+    ctx.textBaseline = "middle"
+    ctx.textAlign = "center"
+    /* NOTE:描边文字：实线与空心文字合起来就是描边啦！先写空心的和先写实心的视觉效果不同：实心与空心谁后写，谁的效果更大！ */
+    /* 第一个参数：文字内容，第二个参数：X轴距离，第三个参数：Y轴距离；先设置文字相关的属性，最后调用fillText方法 */
+    ctx.fillText("canvas文字",500,100)
+    /* 绘制线框文字 */
+    ctx.strokeText("canvas文字",500,100)
+    
+
+    /* 获取canvas画布中指定文字的宽度 */
+    const measureTextWidth = (text,style,size,family) => {
+      const canvas = document.createElement("canvas")
+      const ctx = canvas.getContext("2d")
+      ctx.font = `${style} ${size} ${family}`;
+      ctx.textBaseline = "middle"
+      const width = ctx.measureText(text).width
+      return width
+    }
+    console.log(measureTextWidth("canvas文字","normal","20px","微软雅黑")); // 103.828125
+  </script>
+</body>
+</html>

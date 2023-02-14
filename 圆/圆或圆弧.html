@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>圆或圆弧</title>
+  <style></style>
+</head>
+
+<body>
+
+  <script>
+    const canvas = document.createElement("canvas");
+    // 利用style设置画布边框
+    canvas.style.border = "solid 1px red"
+    canvas.style.backgroundColor = "skyblue"
+    document.body.append(canvas)
+    const ctx = canvas.getContext("2d")
+    // canvas默认的宽高是300 150
+    console.log(canvas.width,canvas.height);
+    // 设置canvas宽高  设置canvas宽高的操作要在绘制图元之前进行，不然就有可能看不到图元
+    canvas.width = 500;
+    canvas.height = 300
+    console.log(canvas.width,canvas.height);
+
+    ctx.strokeStyle="#6ab04c" // 设置或返回用于笔触的颜色、渐变或模式。
+    /* 参数：圆心X Y坐标，半径，起始角度，终止角度 */
+    ctx.beginPath()
+    ctx.arc(150,150,50,0,2*Math.PI)
+    ctx.stroke()
+    /* 中间不加上moveTo就会出现连笔的效果，moveTo方法就是把画笔抬起来，移动到指定位置 */
+    // ctx.moveTo(70,50)
+    ctx.beginPath()
+    ctx.arc(50,50,20,0,Math.PI/2)
+    ctx.stroke()
+  </script>
+</body>
+</html>
