@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>圆或圆弧</title>
+  <style></style>
+</head>
+
+<body>
+
+  <script>
+    const canvas = document.createElement("canvas");
+    // 利用style设置画布边框
+    canvas.style.border = "solid 1px red"
+    canvas.style.backgroundColor = "skyblue"
+    document.body.append(canvas)
+    const ctx = canvas.getContext("2d")
+    console.log(canvas.width, canvas.height);
+    canvas.width = 500;
+    canvas.height = 300
+    console.log(canvas.width, canvas.height);
+
+    ctx.strokeStyle = "#6ab04c";
+    /* 设置透明度的第一种方式，直接使用rgba的颜色格式 */
+    // ctx.fillStyle = "rgba(189, 0, 3,0.3)";
+    /* 设置透明度第二种方式，globalAlpha全局图形透明度的值，不如直接使用rgba灵活 */
+    /*  ctx.fillStyle = 'rgb(189, 0, 3)'
+     ctx.globalAlpha = 0.3 */
+    ctx.beginPath()
+    ctx.arc(150, 150, 50, 0, 2 * Math.PI)
+    ctx.fill()
+  </script>
+</body>
+
+</html>

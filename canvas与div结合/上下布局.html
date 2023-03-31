@@ -6,16 +6,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>canvas文字</title>
-  <style></style>
+  <style>
+    #container {
+      border:1px solid darkgoldenrod;
+    }
+  </style>
 </head>
 
 <body>
+  <div id="container"></div>
   <script>
+    const container = document.getElementById("container");
+    const upDiv = document.createElement("div");
+    upDiv.textContent = 'div区域'
+    upDiv.style.border = `1px solid #2f54eb`;
+    upDiv.style.height = '50px'
+    container.appendChild(upDiv)
     const canvas = document.createElement("canvas");
     // 利用style设置画布边框
     canvas.style.border = "solid 1px red"
     canvas.style.backgroundColor = "skyblue"
-    document.body.append(canvas)
+    container.appendChild(canvas)
     const ctx = canvas.getContext("2d")
     // canvas默认的宽高是300 150
     console.log(canvas.width, canvas.height);

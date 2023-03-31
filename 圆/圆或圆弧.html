@@ -19,22 +19,29 @@
     document.body.append(canvas)
     const ctx = canvas.getContext("2d")
     // canvas默认的宽高是300 150
-    console.log(canvas.width,canvas.height);
+    console.log(canvas.width, canvas.height);
     // 设置canvas宽高  设置canvas宽高的操作要在绘制图元之前进行，不然就有可能看不到图元
     canvas.width = 500;
     canvas.height = 300
-    console.log(canvas.width,canvas.height);
+    console.log(canvas.width, canvas.height);
 
-    ctx.strokeStyle="#6ab04c" // 设置或返回用于笔触的颜色、渐变或模式。
+    ctx.strokeStyle = "#6ab04c" // 设置或返回用于笔触的颜色、渐变或模式。
+    ctx.fillStyle = "#dd7694"
     /* 参数：圆心X Y坐标，半径，起始角度，终止角度 */
     ctx.beginPath()
-    ctx.arc(150,150,50,0,2*Math.PI)
+    ctx.arc(150, 150, 50, 0, 2 * Math.PI)
     ctx.stroke()
-    /* 中间不加上moveTo就会出现连笔的效果，moveTo方法就是把画笔抬起来，移动到指定位置 */
+    /* 两种方式解决连笔：
+      1.moveTo()，moveTo方法就是把画笔抬起来，移动到指定位置
+      2.beginPath()，重新开发会一条路径，但是每次起始一条路径都要调用stroke()或fill()方法，而moveTo不需要每次都调用，但是需要指定下一个点的位置，不如使用beginPath方法方便 */
     // ctx.moveTo(70,50)
     ctx.beginPath()
-    ctx.arc(50,50,20,0,Math.PI/2)
+    ctx.arc(50, 50, 20, 0, Math.PI / 2)
     ctx.stroke()
+    ctx.beginPath()
+    ctx.arc(200, 50, 20, 0, 2 * Math.PI)
+    ctx.fill()
   </script>
 </body>
+
 </html>
